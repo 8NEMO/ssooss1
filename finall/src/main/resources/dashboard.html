@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+</head>
+<body>
+<h1>Сайты и их статистика</h1>
+<div>
+    <p>Всего сайтов: <span th:text="${statistics.statistics.total.sites}"></span></p>
+    <p>Всего страниц: <span th:text="${statistics.statistics.total.pages}"></span></p>
+    <p>Всего лемм: <span th:text="${statistics.statistics.total.lemmas}"></span></p>
+    <p>Индексация: <span th:text="${statistics.statistics.total.indexing ? 'В процессе' : 'Завершена'}"></span></p>
+</div>
+<h2>Подробная статистика</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Имя сайта</th>
+        <th>URL</th>
+        <th>Статус</th>
+        <th>Время статуса</th>
+        <th>Ошибка</th>
+        <th>Количество страниц</th>
+        <th>Количество лемм</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${statistics.statistics.detailed}">
+        <td th:text="${item.name}"></td>
+        <td th:text="${item.url}"></td>
+        <td th:text="${item.status}"></td>
+        <td th:text="${#dates.format(item.statusTime, 'dd-MM-yyyy HH:mm:ss')}"></td>
+        <td th:text="${item.error}"></td>
+        <td th:text="${item.pages}"></td>
+        <td th:text="${item.lemmas}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

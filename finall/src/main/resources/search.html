@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+</head>
+<body>
+<h1>Поиск</h1>
+<form action="/search" method="get">
+    <input type="text" name="query" placeholder="Введите запрос" required>
+    <input type="text" name="site" placeholder="Введите URL сайта (необязательно)">
+    <button type="submit">Поиск</button>
+</form>
+<h2>Результаты</h2>
+<ul>
+    <li th:each="result : ${results}">
+        <a th:href="${result.url}" th:text="${result.title}" target="_blank"></a>
+        <p th:text="${result.snippet}"></p>
+    </li>
+</ul>
+</body>
+</html>

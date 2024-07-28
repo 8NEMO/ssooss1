@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Management</title>
+</head>
+<body>
+<h1>Управление индексацией</h1>
+<form action="/start-indexing" method="post">
+    <button type="submit">Запустить индексацию</button>
+</form>
+<form action="/stop-indexing" method="post">
+    <button type="submit">Остановить индексацию</button>
+</form>
+<p th:text="${message}"></p>
+</body>
+</html>
